@@ -1,0 +1,16 @@
+diff -crB a/crossbuild/libftdi1-1.3+GIT/src/ftdi.c b/crossbuild/libftdi1-1.3+GIT/src/ftdi.c
+*** a/crossbuild/libftdi1-1.3+GIT/src/ftdi.c	2020-12-25 12:18:35.000000000 +0100
+--- b/crossbuild/libftdi1-1.3+GIT/src/ftdi.c	2020-09-05 11:12:58.000000000 +0200
+***************
+*** 73,78 ****
+--- 73,82 ----
+      }
+  }
+  
++ static inline int libusb_wrap_fd (libusb_context *ctx, int fd, libusb_device_handle **dev_handle) {
++     return libusb_wrap_sys_device (ctx, (intptr_t) fd, dev_handle);
++ }
++ 
+  /**
+      Initializes a ftdi_context.
+  

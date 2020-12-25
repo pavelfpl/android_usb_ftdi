@@ -1,0 +1,178 @@
+/*
+ ------------------------------------------------------
+ How to use libusb/libftdi using C++ and Qt5 on Android 
+ ------------------------------------------------------
+ Pavel Fiala 2020
+ - use as reference / fragment codes only ...
+*/
+
+// 1) Qt5 application *.pro file - LIBS
+
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    ANDROID_EXTRA_LIBS = \
+        $$PWD/lib/armv7a_32/libusb-1.0.so \
+        $$PWD/lib/armv7a_32/libftdi1.so
+        LIBS += -L$$PWD/lib/armv7a_32/ -lftdi1
+}
+
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_EXTRA_LIBS = \
+        $$PWD/lib/armv8_64/libusb-1.0.so \
+        $$PWD/lib/armv8_64/libftdi1.so
+        LIBS += -L$$PWD/lib/armv8_64/ -lftdi1
+}
+
+// 2) You need obtain descriptor (fd) at first ...
+
+// get_usb_fd() function (usb init only for Android)
+// -------------------------------------------------
+
+/*
+* Get the file descriptor of first available ftdi device attached to usb in android.
+* This is needed for device_open on android.
+*
+* return
+*	-1 : No Usb Device is attached.
+*	-2 : No ftdi device found.
+*	-3 : No permission for using the device
+*	-4 : Error while opening the device.
+*   +ve num : Successfully extracted file descriptor is returned.
+*/
+
+
+int32_t get_usb_fd(QString &thisFtdiDev){
+
+  int32_t i;
+  jint fd, vendorid, productid;
+  QAndroidJniObject usbName, usbDevice;
+
+  // Get the current main activity of the application.
+  QAndroidJniObject activity = QtAndroid::androidActivity();
+
+  QAndroidJniObject usb_service = QAndroidJniObject::fromString(USB_SERVICE);
+
+  // Get UsbManager from activity
+  QAndroidJniObject usbManager = activity.callObjectMethod("getSystemService", "(Ljava/lang/String;)Ljava/lang/Object;", usb_service.object());
+
+  // Get a HashMap<Name, UsbDevice> of all USB devices attached to Android
+  QAndroidJniObject deviceMap = usbManager.callObjectMethod("getDeviceList", "()Ljava/util/HashMap;");
+  jint num_devices = deviceMap.callMethod<jint>("size", "()I");
+  if (num_devices == 0) {
+      // No USB device is attached.
+      return -1;
+  }
+
+  // Iterate over all the devices and find the first available FTDI device.
+  QAndroidJniObject keySet = deviceMap.callObjectMethod("keySet", "()Ljava/util/Set;");
+  QAndroidJniObject iterator = keySet.callObjectMethod("iterator", "()Ljava/util/Iterator;");
+
+  for (i = 0; i < num_devices; i++) {
+      usbName = iterator.callObjectMethod("next", "()Ljava/lang/Object;");
+      usbDevice = deviceMap.callObjectMethod ("get", "(Ljava/lang/Object;)Ljava/lang/Object;", usbName.object());
+      vendorid = usbDevice.callMethod<jint>("getVendorId", "()I");
+      productid = usbDevice.callMethod<jint>("getProductId", "()I");
+
+      if(vendorid == CONST_FTDI_VID && (productid == CONST_FTDI_PID_H || productid == CONST_FTDI_PID_R || productid == CONST_FTDI_PID_X) ){     // Found a FTDI device - create USBInterface instance and break
+         usbInterface = usbDevice.callObjectMethod("getInterface", "(I)Landroid/hardware/usb/UsbInterface;",i);
+         thisFtdiDev = usbName.toString();         // Set usb device name ...
+         break;
+      }
+  }
+  if (i == num_devices) {
+      // No ftdi device found.
+      return -2;
+  }
+
+  jboolean hasPermission = usbManager.callMethod<jboolean>("hasPermission", "(Landroid/hardware/usb/UsbDevice;)Z", usbDevice.object());
+  if (!hasPermission) {
+      // You do not have permission to use the usbDevice.
+      // Please remove and reinsert the USB device.
+      // Could also give an dialogbox asking for permission.
+      return -3;
+  }
+
+  // An FTDI device is present and we also have permission to use the device.
+  // Open the device and get its file descriptor.
+  usbDeviceConnection = usbManager.callObjectMethod("openDevice", "(Landroid/hardware/usb/UsbDevice;)Landroid/hardware/usb/UsbDeviceConnection;", usbDevice.object());
+  if (usbDeviceConnection.object() == NULL) {
+      // Some error occurred while opening the device. Exit.
+      return -4;
+  }
+
+  // Finally get the required file descriptor.
+  fd = usbDeviceConnection.callMethod<jint>("getFileDescriptor", "()I");
+  if (fd == -1) {
+      // The device is not opened. Some error.
+      return -4;
+  }
+  
+  return fd;
+}
+
+// 3) FTDI init function (use previous descriptor fd and thisFtdiDev as parameters)
+// - example: ftdiInit(fd,thisFtdiDev.toStdString().c_str());
+
+// ftdiInit function - init of FTDI resources (UART)
+// -----------------------------------------------------
+int32_t ftdiInit(const int32_t fd,const char *devName){
+
+    int32_t f_d=-1;
+
+    // Allocate and initialize a new ftdi_context ...
+    // ----------------------------------------------
+    if ((ftdi = ftdi_new()) == 0){
+         cout << "ftdi_new failed" << endl;
+         return CONST_FTDI_NEW_FAILED;
+    }
+
+    ftdi_set_interface(ftdi, INTERFACE_ANY);
+
+    // Open interface - ftdi_set_interface ...
+    // ---------------------------------------
+    if((f_d = ftdi_usb_open2(ftdi,devName,fd)) < 0){
+        cout << "Unable to open device with name: " <<devName<<endl;
+        ftdi=0;
+        return CONST_FTDI_UNABLE_OPEN;
+    }
+
+    // Set baudrate
+    if((f_d = ftdi_set_baudrate(ftdi, baudrate)) < 0){
+       cout << "Unable to set baudrate:"<< f_d << endl << "(" << ftdi_get_error_string(ftdi) <<")"<< endl;
+       return CONST_FTDI_UNABLE_SET_BAUDARETE;
+    }
+
+    // Set line parameters (default STOP_BIT_1 == 0, parity NONE == 0 )
+    if((f_d = ftdi_set_line_property(ftdi, BITS_8, STOP_BIT_1, NONE)) < 0){
+       cout << "Unable to set line parameters:"<< f_d << endl << "(" << ftdi_get_error_string(ftdi) <<")"<< endl;
+       return CONST_FTDI_UNABLE_SET_LINE;
+    }
+
+    // Configure write buffer chunk size, Default is 4096.
+    if((f_d = ftdi_write_data_set_chunksize(ftdi,4096 )) < 0){
+       cout << "Unable to set write buffer chunk size parameter:"<< f_d << endl << "(" << ftdi_get_error_string(ftdi) <<")"<< endl;
+       return CONST_FTDI_UNABLE_SET_WRITE_CHUNK_SIZE;
+    }
+
+    // Configure read buffer chunk size, Default is 4096.
+    if((f_d =  ftdi_read_data_set_chunksize(ftdi,4096 )) < 0){
+       cout << "Unable to set read buffer chunk size parameter:"<< f_d << endl << "(" << ftdi_get_error_string(ftdi) <<")"<< endl;
+       return CONST_FTDI_UNABLE_SET_READ_CHUNK_SIZE;
+    }
+
+    // Set latency timer, the FTDI chip keeps data in the internal buffer for a specific amount of time if the buffer is not full yet to decrease load on the usb bus.
+    if((f_d =  ftdi_set_latency_timer(ftdi,16)) < 0){
+       cout << "Unable to set latency timer parameter:"<< f_d << endl << "(" << ftdi_get_error_string(ftdi) <<")"<< endl;
+       return CONST_FTDI_UNABLE_SET_LATENCY_TIMER;
+    }
+
+    return CONST_FTDI_OK;
+
+}
+
+// 4) Close USB connection ...
+
+if(fd > 0){
+   jboolean release=usbDeviceConnection.callMethod<jboolean>("releaseInterface", "(Landroid/hardware/usb/UsbInterface;)Z",usbInterface.object());
+   Q_UNUSED(release);
+   usbDeviceConnection.callMethod<void>("close");
+}
