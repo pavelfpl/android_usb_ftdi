@@ -7,7 +7,9 @@ Automatic libusb and libftdi build script for Android (5.x-10.x Android version 
 
 # Requirements
 Install recent Android Native Development Kit (NDK), tested with: 21.1.6352462 
+
 Set your NDK path in build_android_usb
+
 Example: export NDK=$HOME/Android/Sdk/ndk/21.1.6352462
 
 # Build
