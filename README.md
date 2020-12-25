@@ -8,13 +8,13 @@ Automatic libusb and libftdi build script for Android (5.x-10.x Android version 
 # Requirements
 Install recent Android Native Development Kit (NDK), tested with: 21.1.6352462 
 
-Set your NDK path in build_android_usb
+Set your NDK path in build_android_usb.sh
 
 Example: export NDK=$HOME/Android/Sdk/ndk/21.1.6352462
 
 # Build
-- for armv7a (32-bit) architecture run: ./build_android_usb arm32 
-- for armv8 (64-bit) architecture run: ./build_android_usb arm64 
+- for armv7a (32-bit) architecture run: ./build_android_usb.sh arm32 
+- for armv8 (64-bit) architecture run: ./build_android_usb.sh arm64 
 - arm32 is default
 - cross compiled libraries are in android_libs/armv7a_32 or android_libs/armv8_64
 
