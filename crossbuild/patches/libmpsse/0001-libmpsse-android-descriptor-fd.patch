@@ -1,0 +1,164 @@
+diff -crB a/src/mpsse.c b/src/mpsse.c
+*** a/src/mpsse.c	2015-04-01 18:05:45.000000000 +0200
+--- b/src/mpsse.c	2015-04-01 18:00:08.965278667 +0200
+***************
+*** 49,62 ****
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! struct mpsse_context *MPSSE(enum modes mode, int freq, int endianess)
+  {
+  	int i = 0;
+  	struct mpsse_context *mpsse = NULL;
+  
+  	for(i=0; supported_devices[i].vid != 0; i++)
+  	{
+! 		if((mpsse = Open(supported_devices[i].vid, supported_devices[i].pid, mode, freq, endianess, IFACE_A, NULL, NULL)) != NULL)
+  		{
+  			if(mpsse->open)
+  			{
+--- 49,66 ----
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! 
+! // Android added { int fd_ }
+! // -------------------------
+! 
+! struct mpsse_context *MPSSE(enum modes mode, int freq, int endianess, int fd_)
+  {
+  	int i = 0;
+  	struct mpsse_context *mpsse = NULL;
+  
+  	for(i=0; supported_devices[i].vid != 0; i++)
+  	{
+! 		if((mpsse = Open(supported_devices[i].vid, supported_devices[i].pid, mode, freq, endianess, IFACE_A, NULL, NULL,fd_)) != NULL)
+  		{
+  			if(mpsse->open)
+  			{
+***************
+*** 91,99 ****
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! struct mpsse_context *Open(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial)
+  {
+! 	return OpenIndex(vid, pid, mode, freq, endianess, interface, description, serial, 0);
+  }
+  
+  /* 
+--- 95,107 ----
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! 
+! // Android added { int fd_ }
+! // -------------------------
+! 
+! struct mpsse_context *Open(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial, int fd_)
+  {
+! 	return OpenIndex(vid, pid, mode, freq, endianess, interface, description, serial, 0, fd_);
+  }
+  
+  /* 
+***************
+*** 113,119 ****
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! struct mpsse_context *OpenIndex(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial, int index)
+  {
+  	int status = 0;
+  	struct mpsse_context *mpsse = NULL;
+--- 121,131 ----
+   * On success, mpsse->open will be set to 1.
+   * On failure, mpsse->open will be set to 0.
+   */
+! 
+! // Android added { int fd_ }
+! // -------------------------
+! 
+! struct mpsse_context *OpenIndex(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial, int index, int fd_)
+  {
+  	int status = 0;
+  	struct mpsse_context *mpsse = NULL;
+***************
+*** 135,141 ****
+  			ftdi_set_interface(&mpsse->ftdi, interface);
+  
+  			/* Open the specified device */
+! 			if(ftdi_usb_open_desc_index(&mpsse->ftdi, vid, pid, description, serial, index) == 0)
+  			{
+  				mpsse->mode = mode;
+  				mpsse->vid = vid;
+--- 147,158 ----
+  			ftdi_set_interface(&mpsse->ftdi, interface);
+  
+  			/* Open the specified device */
+! 			
+! 			
+! 			// Android specific - provide USB descriptor
+! 			//------------------------------------------
+! 			if(ftdi_usb_open_fd_desc_index(&mpsse->ftdi, vid, pid, description, serial, index, fd_) == 0)
+! 			// if(ftdi_usb_open_desc_index(&mpsse->ftdi, vid, pid, description, serial, index) == 0)
+  			{
+  				mpsse->mode = mode;
+  				mpsse->vid = vid;
+diff -crB a/src/mpsse.h b/src/mpsse.h
+*** a/src/mpsse.h	2015-04-01 18:05:45.000000000 +0200
+--- b/src/mpsse.h	2015-04-01 17:58:44.690246638 +0200
+***************
+*** 9,14 ****
+--- 9,28 ----
+  #include <ftdi.h>
+  #endif
+  
++ #ifdef WIN32
++ #ifdef EXPORT_DLL
++ #define __dll __declspec(dllexport)
++ #else
++ #define __dll __declspec(dllimport)
++ #endif
++ #else
++ #define __dll
++ #endif
++ 
++ #ifdef __cplusplus
++ extern "C" {
++ #endif
++ 
+  #define MPSSE_OK		0
+  #define MPSSE_FAIL		-1
+  
+***************
+*** 173,181 ****
+  	uint8_t rack;
+  };
+  
+! struct mpsse_context *MPSSE(enum modes mode, int freq, int endianess);
+! struct mpsse_context *Open(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial);
+! struct mpsse_context *OpenIndex(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial, int index);
+  void Close(struct mpsse_context *mpsse);
+  const char *ErrorString(struct mpsse_context *mpsse);
+  int SetMode(struct mpsse_context *mpsse, int endianess);
+--- 187,195 ----
+  	uint8_t rack;
+  };
+  
+! struct mpsse_context *MPSSE(enum modes mode, int freq, int endianess,int fd_); // Android added { int fd_ }
+! struct mpsse_context *Open(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial,int fd_); // Android added { int fd_ }
+! struct mpsse_context *OpenIndex(int vid, int pid, enum modes mode, int freq, int endianess, int interface, const char *description, const char *serial, int index,int fd_); // Android added { int fd_ }
+  void Close(struct mpsse_context *mpsse);
+  const char *ErrorString(struct mpsse_context *mpsse);
+  int SetMode(struct mpsse_context *mpsse, int endianess);
+***************
+*** 226,229 ****
+--- 242,249 ----
+  #endif
+  
+  
++ #ifdef __cplusplus
++ }
++ #endif
++ 
+  #endif

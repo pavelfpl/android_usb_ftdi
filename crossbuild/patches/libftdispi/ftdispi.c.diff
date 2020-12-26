@@ -1,0 +1,15 @@
+diff --git a/src/ftdispi.c b/src/ftdispi.c
+index 0a71612..850baee 100644
+--- a/src/ftdispi.c
++++ b/src/ftdispi.c
+@@ -247,6 +247,10 @@ __dll int ftdispi_write_read(struct ftdispi_context *fsc,
+ 		i += wcount;
+ 	}
+ 	if (rcount && rbuf) {
++		while (ftdi_read_data(&fsc->fc, rbuf ,1)>0);//Empty read data buffer
++		while (ftdi_read_data(&fsc->fc, rbuf ,1)>0)printf("Critical warning: read data buffer not null1\n");//Empty read data buffer
++		while (ftdi_read_data(&fsc->fc, rbuf ,1)>0)printf("Critical warning: read data buffer not null2\n");//Empty read data buffer
++		while (ftdi_read_data(&fsc->fc, rbuf ,1)>0)printf("Critical warning: read data buffer not null3\n");//Empty read data buffer
+ 		fsc->mem[i++] = fsc->rd_cmd;
+ 		fsc->mem[i++] = (rcount - 1) & 0xFF;
+ 		fsc->mem[i++] = ((rcount - 1) >> 8) & 0xFF;

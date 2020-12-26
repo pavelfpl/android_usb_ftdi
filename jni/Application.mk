@@ -1,0 +1,3 @@
+APP_PLATFORM := android-21
+APP_ABI := $(TARGET_ARCH_ABI)
+

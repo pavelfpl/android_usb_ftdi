@@ -1,0 +1,5 @@
+I am experiencing some extra bytes present in buffers when reading from SPI (tried with FT232H chip on WinXP & Debian). 
+Most of the time there is one extra byte, sometimes two. This gave me a lots of errors until I figured this out.
+I have added the attached workaround to prevent this. 
+
+- must be tested !!!

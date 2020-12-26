@@ -1,0 +1,28 @@
+From 09d3fbb2f25650615c610e616bdfd6597b08e242 Mon Sep 17 00:00:00 2001
+From: Venkatesh Shukla <venkatesh.shukla.eee11@iitbhu.ac.in>
+Date: Thu, 19 Jun 2014 01:12:20 +0530
+Subject: [PATCH 2/2] Remove -c flag from LIBS
+
+This flag is being misinterpreted compile don't link option.
+This causes major trouble. Hence it is removed.
+
+Signed-off-by: Venkatesh Shukla <venkatesh.shukla.eee11@iitbhu.ac.in>
+---
+ configure.ac | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index fffa2e8..08666f0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -123,7 +123,6 @@ case $is_backend_android in
+ yes)
+ 	dnl some pthread functions is in libc
+ 	THREAD_CFLAGS="-c"
+-	LIBS="${LIBS} -c"
+ 	dnl there are gettimeofday function but configure doesn't seem to be able to find it.
+ 	AC_DEFINE([HAVE_GETTIMEOFDAY], [1], [Define if you have gettimeofday])
+ 	;;
+-- 
+1.9.3
+

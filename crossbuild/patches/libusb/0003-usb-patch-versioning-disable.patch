@@ -1,0 +1,22 @@
+diff -crB a/configure.ac b/configure.ac
+*** a/configure.ac	2015-03-15 09:38:16.440575157 +0100
+--- b/configure.ac	2015-03-15 09:34:45.496581244 +0100
+***************
+*** 24,30 ****
+  lt_current="1"
+  lt_revision="0"
+  lt_age="1"
+! LTLDFLAGS="-version-info ${lt_current}:${lt_revision}:${lt_age}"
+  
+  AM_INIT_AUTOMAKE
+  AM_MAINTAINER_MODE
+--- 24,32 ----
+  lt_current="1"
+  lt_revision="0"
+  lt_age="1"
+! # LTLDFLAGS="-version-info ${lt_current}:${lt_revision}:${lt_age}"
+! # Disable shared library versioning for Android
+! LTLDFLAGS="-avoid-version -no-undefined" 
+  
+  AM_INIT_AUTOMAKE
+  AM_MAINTAINER_MODE

@@ -1,0 +1,789 @@
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+WARNING: make-standalone-toolchain.sh will be removed in r13. Please try make_standalone_toolchain.py now to make sure it works for your needs.
+HOST_OS=linux
+HOST_EXE=
+HOST_ARCH=x86_64
+HOST_TAG=linux-x86_64
+HOST_NUM_CPUS=4
+BUILD_NUM_CPUS=8
+Auto-config: --toolchain=arm-linux-androideabi-4.9
+Copying prebuilt binaries...
+Copying sysroot headers and libraries...
+Copying c++ runtime headers and libraries...
+Copying files to: ndk-arm
+Cleaning up...
+Done.
+Start of building - libusb and libftdi for android...
+-----------------------------------------------------
+libusb-1.0.19/
+libusb-1.0.19/android/
+libusb-1.0.19/android/config.h
+libusb-1.0.19/android/jni/
+libusb-1.0.19/android/jni/tests.mk
+libusb-1.0.19/android/jni/examples.mk
+libusb-1.0.19/android/jni/Application.mk
+libusb-1.0.19/android/jni/libusb.mk
+libusb-1.0.19/android/jni/Android.mk
+libusb-1.0.19/android/README
+libusb-1.0.19/COPYING
+libusb-1.0.19/libusb/
+libusb-1.0.19/libusb/sync.c
+libusb-1.0.19/libusb/io.c
+libusb-1.0.19/libusb/version_nano.h
+libusb-1.0.19/libusb/descriptor.c
+libusb-1.0.19/libusb/os/
+libusb-1.0.19/libusb/os/poll_posix.h
+libusb-1.0.19/libusb/os/wince_usb.c
+libusb-1.0.19/libusb/os/netbsd_usb.c
+libusb-1.0.19/libusb/os/threads_windows.c
+libusb-1.0.19/libusb/os/threads_windows.h
+libusb-1.0.19/libusb/os/poll_windows.h
+libusb-1.0.19/libusb/os/windows_usb.c
+libusb-1.0.19/libusb/os/linux_udev.c
+libusb-1.0.19/libusb/os/linux_netlink.c
+libusb-1.0.19/libusb/os/threads_posix.c
+libusb-1.0.19/libusb/os/darwin_usb.c
+libusb-1.0.19/libusb/os/darwin_usb.h
+libusb-1.0.19/libusb/os/poll_windows.c
+libusb-1.0.19/libusb/os/linux_usbfs.h
+libusb-1.0.19/libusb/os/threads_posix.h
+libusb-1.0.19/libusb/os/openbsd_usb.c
+libusb-1.0.19/libusb/os/linux_usbfs.c
+libusb-1.0.19/libusb/os/windows_common.h
+libusb-1.0.19/libusb/os/wince_usb.h
+libusb-1.0.19/libusb/os/windows_usb.h
+libusb-1.0.19/libusb/os/poll_posix.c
+libusb-1.0.19/libusb/version.h
+libusb-1.0.19/libusb/Makefile.in
+libusb-1.0.19/libusb/Makefile.am
+libusb-1.0.19/libusb/libusbi.h
+libusb-1.0.19/libusb/hotplug.c
+libusb-1.0.19/libusb/core.c
+libusb-1.0.19/libusb/hotplug.h
+libusb-1.0.19/libusb/libusb.h
+libusb-1.0.19/libusb/libusb-1.0.def
+libusb-1.0.19/libusb/libusb-1.0.rc
+libusb-1.0.19/libusb/strerror.c
+libusb-1.0.19/ChangeLog
+libusb-1.0.19/examples/
+libusb-1.0.19/examples/dpfp.c
+libusb-1.0.19/examples/sam3u_benchmark.c
+libusb-1.0.19/examples/ezusb.c
+libusb-1.0.19/examples/xusb.c
+libusb-1.0.19/examples/Makefile.in
+libusb-1.0.19/examples/listdevs.c
+libusb-1.0.19/examples/dpfp_threaded.c
+libusb-1.0.19/examples/ezusb.h
+libusb-1.0.19/examples/Makefile.am
+libusb-1.0.19/examples/hotplugtest.c
+libusb-1.0.19/examples/getopt/
+libusb-1.0.19/examples/getopt/getopt.h
+libusb-1.0.19/examples/getopt/getopt1.c
+libusb-1.0.19/examples/getopt/getopt.c
+libusb-1.0.19/examples/fxload.c
+libusb-1.0.19/configure.ac
+libusb-1.0.19/missing
+libusb-1.0.19/m4/
+libusb-1.0.19/m4/ltoptions.m4
+libusb-1.0.19/m4/ltsugar.m4
+libusb-1.0.19/m4/ltversion.m4
+libusb-1.0.19/m4/libtool.m4
+libusb-1.0.19/m4/lt~obsolete.m4
+libusb-1.0.19/AUTHORS
+libusb-1.0.19/Makefile.in
+libusb-1.0.19/config.h.in
+libusb-1.0.19/NEWS
+libusb-1.0.19/Makefile.am
+libusb-1.0.19/configure
+libusb-1.0.19/TODO
+libusb-1.0.19/INSTALL
+libusb-1.0.19/libusb-1.0.pc.in
+libusb-1.0.19/PORTING
+libusb-1.0.19/config.sub
+libusb-1.0.19/tests/
+libusb-1.0.19/tests/libusb_testlib.h
+libusb-1.0.19/tests/stress.c
+libusb-1.0.19/tests/Makefile.in
+libusb-1.0.19/tests/testlib.c
+libusb-1.0.19/tests/Makefile.am
+libusb-1.0.19/ltmain.sh
+libusb-1.0.19/msvc/
+libusb-1.0.19/msvc/xusb_2013.vcxproj
+libusb-1.0.19/msvc/listdevs_2010.vcxproj.filters
+libusb-1.0.19/msvc/stress_2010.vcxproj.filters
+libusb-1.0.19/msvc/libusb_dll_2013.vcxproj
+libusb-1.0.19/msvc/libusb_static.dsp
+libusb-1.0.19/msvc/hotplugtest_2010.vcxproj.filters
+libusb-1.0.19/msvc/fxload_2013.vcxproj
+libusb-1.0.19/msvc/libusb_dll_2005.vcproj
+libusb-1.0.19/msvc/xusb_2005.vcproj
+libusb-1.0.19/msvc/getopt_2010.vcxproj
+libusb-1.0.19/msvc/libusb.dsw
+libusb-1.0.19/msvc/errno.h
+libusb-1.0.19/msvc/libusb_2013.sln
+libusb-1.0.19/msvc/hotplugtest_2013.vcxproj
+libusb-1.0.19/msvc/config.h
+libusb-1.0.19/msvc/xusb_wince.vcproj
+libusb-1.0.19/msvc/hotplugtest_2010.vcxproj
+libusb-1.0.19/msvc/libusb_dll_wince.vcproj
+libusb-1.0.19/msvc/libusb_dll.dsp
+libusb-1.0.19/msvc/xusb_sources
+libusb-1.0.19/msvc/libusb_dll_2010.vcxproj.filters
+libusb-1.0.19/msvc/hotplugtest_2012.vcxproj.filters
+libusb-1.0.19/msvc/xusb_2012.vcxproj
+libusb-1.0.19/msvc/libusb_wince.sln
+libusb-1.0.19/msvc/libusb_dll_2010.vcxproj
+libusb-1.0.19/msvc/listdevs_wince.vcproj
+libusb-1.0.19/msvc/hotplugtest_sources
+libusb-1.0.19/msvc/stress_2013.vcxproj
+libusb-1.0.19/msvc/listdevs_2013.vcxproj
+libusb-1.0.19/msvc/inttypes.h
+libusb-1.0.19/msvc/listdevs_2010.vcxproj
+libusb-1.0.19/msvc/getopt_sources
+libusb-1.0.19/msvc/libusb_dll_2012.vcxproj
+libusb-1.0.19/msvc/libusb_dll_2012.vcxproj.filters
+libusb-1.0.19/msvc/libusb_2005.sln
+libusb-1.0.19/msvc/xusb_2010.vcxproj
+libusb-1.0.19/msvc/fxload_2010.vcxproj
+libusb-1.0.19/msvc/stress_2012.vcxproj
+libusb-1.0.19/msvc/libusb_static_2012.vcxproj
+libusb-1.0.19/msvc/fxload_sources
+libusb-1.0.19/msvc/fxload_2010.vcxproj.filters
+libusb-1.0.19/msvc/stress_2005.vcproj
+libusb-1.0.19/msvc/listdevs.dsp
+libusb-1.0.19/msvc/ddk_build.cmd
+libusb-1.0.19/msvc/stress_2012.vcxproj.filters
+libusb-1.0.19/msvc/listdevs_sources
+libusb-1.0.19/msvc/libusb_sources
+libusb-1.0.19/msvc/getopt_2005.vcproj
+libusb-1.0.19/msvc/fxload_2012.vcxproj
+libusb-1.0.19/msvc/xusb_2012.vcxproj.filters
+libusb-1.0.19/msvc/libusb_static_2010.vcxproj.filters
+libusb-1.0.19/msvc/xusb_2010.vcxproj.filters
+libusb-1.0.19/msvc/libusb_static_2010.vcxproj
+libusb-1.0.19/msvc/xusb.dsp
+libusb-1.0.19/msvc/listdevs_2012.vcxproj.filters
+libusb-1.0.19/msvc/hotplugtest_2012.vcxproj
+libusb-1.0.19/msvc/missing.c
+libusb-1.0.19/msvc/getopt_2013.vcxproj
+libusb-1.0.19/msvc/getopt_2012.vcxproj
+libusb-1.0.19/msvc/getopt_2012.vcxproj.filters
+libusb-1.0.19/msvc/stdint.h
+libusb-1.0.19/msvc/libusb_static_2013.vcxproj
+libusb-1.0.19/msvc/libusb_static_2012.vcxproj.filters
+libusb-1.0.19/msvc/libusb_static_wince.vcproj
+libusb-1.0.19/msvc/libusb_2012.sln
+libusb-1.0.19/msvc/stress_wince.vcproj
+libusb-1.0.19/msvc/libusb_2010.sln
+libusb-1.0.19/msvc/listdevs_2012.vcxproj
+libusb-1.0.19/msvc/libusb_static_2005.vcproj
+libusb-1.0.19/msvc/missing.h
+libusb-1.0.19/msvc/fxload_2012.vcxproj.filters
+libusb-1.0.19/msvc/listdevs_2005.vcproj
+libusb-1.0.19/msvc/stress_2010.vcxproj
+libusb-1.0.19/msvc/getopt_2010.vcxproj.filters
+libusb-1.0.19/Xcode/
+libusb-1.0.19/Xcode/config.h
+libusb-1.0.19/Xcode/libusb.xcconfig
+libusb-1.0.19/Xcode/libusb_release.xcconfig
+libusb-1.0.19/Xcode/debug.xcconfig
+libusb-1.0.19/Xcode/release.xcconfig
+libusb-1.0.19/Xcode/libusb_debug.xcconfig
+libusb-1.0.19/Xcode/common.xcconfig
+libusb-1.0.19/Xcode/libusb.xcodeproj/
+libusb-1.0.19/Xcode/libusb.xcodeproj/project.pbxproj
+libusb-1.0.19/doc/
+libusb-1.0.19/doc/doxygen.cfg.in
+libusb-1.0.19/doc/Makefile.in
+libusb-1.0.19/doc/Makefile.am
+libusb-1.0.19/compile
+libusb-1.0.19/aclocal.m4
+libusb-1.0.19/README
+libusb-1.0.19/depcomp
+libusb-1.0.19/install-sh
+libusb-1.0.19/config.guess
+~/build_android_toolchains/crossbuild/libusb-1.0.19 ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+patching file libusb/core.c
+patching file libusb/libusb.h
+patching file libusb/libusbi.h
+patching file libusb/os/linux_usbfs.c
+patching file configure.ac
+patching file configure.ac
+Patching libusb for Android 5+(lollipop) support [SE Linux workaround] ...
+patching file libusb/os/linux_usbfs.c
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+libftdi1-1.2/
+libftdi1-1.2/.gitignore
+libftdi1-1.2/AUTHORS
+libftdi1-1.2/CMakeLists.txt
+libftdi1-1.2/COPYING-CMAKE-SCRIPTS
+libftdi1-1.2/COPYING.GPL
+libftdi1-1.2/COPYING.LIB
+libftdi1-1.2/ChangeLog
+libftdi1-1.2/LICENSE
+libftdi1-1.2/README
+libftdi1-1.2/README.build
+libftdi1-1.2/README.mingw
+libftdi1-1.2/TODO
+libftdi1-1.2/cmake/
+libftdi1-1.2/cmake/FindConfuse.cmake
+libftdi1-1.2/cmake/FindLibintl.cmake
+libftdi1-1.2/cmake/FindUSB1.cmake
+libftdi1-1.2/cmake/LibFTDI1Config.cmake.in
+libftdi1-1.2/cmake/LibFTDI1ConfigVersion.cmake.in
+libftdi1-1.2/cmake/Toolchain-Crossbuild32.cmake
+libftdi1-1.2/cmake/Toolchain-i686-w64-mingw32.cmake
+libftdi1-1.2/cmake/Toolchain-mingw32.cmake
+libftdi1-1.2/cmake/Toolchain-x86_64-w64-mingw32.cmake
+libftdi1-1.2/cmake/UseLibFTDI1.cmake
+libftdi1-1.2/doc/
+libftdi1-1.2/doc/Doxyfile.in
+libftdi1-1.2/doc/Doxyfile.xml.in
+libftdi1-1.2/doc/EEPROM-structure
+libftdi1-1.2/doc/astyle_reformat.sh
+libftdi1-1.2/doc/release-checklist.txt
+libftdi1-1.2/examples/
+libftdi1-1.2/examples/CMakeLists.txt
+libftdi1-1.2/examples/baud_test.c
+libftdi1-1.2/examples/bitbang.c
+libftdi1-1.2/examples/bitbang2.c
+libftdi1-1.2/examples/bitbang_cbus.c
+libftdi1-1.2/examples/bitbang_cbus_eeprom_for_windows.ept
+libftdi1-1.2/examples/bitbang_ft2232.c
+libftdi1-1.2/examples/cmake_example/
+libftdi1-1.2/examples/cmake_example/CMakeLists.txt
+libftdi1-1.2/examples/cmake_example/main.c
+libftdi1-1.2/examples/eeprom.c
+libftdi1-1.2/examples/find_all.c
+libftdi1-1.2/examples/find_all_pp.cpp
+libftdi1-1.2/examples/serial_test.c
+libftdi1-1.2/examples/simple.c
+libftdi1-1.2/examples/stream_test.c
+libftdi1-1.2/ftdi_eeprom/
+libftdi1-1.2/ftdi_eeprom/CMakeLists.txt
+libftdi1-1.2/ftdi_eeprom/example.conf
+libftdi1-1.2/ftdi_eeprom/ftdi_eeprom_version.h.in
+libftdi1-1.2/ftdi_eeprom/main.c
+libftdi1-1.2/ftdipp/
+libftdi1-1.2/ftdipp/CMakeLists.txt
+libftdi1-1.2/ftdipp/ftdi.cpp
+libftdi1-1.2/ftdipp/ftdi.hpp
+libftdi1-1.2/libftdi-1.0.kdev4
+libftdi1-1.2/libftdi.lnt
+libftdi1-1.2/libftdi1-config.in
+libftdi1-1.2/libftdi1.pc.in
+libftdi1-1.2/libftdi1.spec.in
+libftdi1-1.2/libftdipp1.pc.in
+libftdi1-1.2/packages/
+libftdi1-1.2/packages/99-libftdi.rules
+libftdi1-1.2/packages/CMakeLists.txt
+libftdi1-1.2/python/
+libftdi1-1.2/python/CMakeLists.txt
+libftdi1-1.2/python/doxy2swig.py
+libftdi1-1.2/python/examples/
+libftdi1-1.2/python/examples/CMakeLists.txt
+libftdi1-1.2/python/examples/complete.py
+libftdi1-1.2/python/examples/simple.py
+libftdi1-1.2/python/ftdi1.i
+libftdi1-1.2/src/
+libftdi1-1.2/src/CMakeLists.txt
+libftdi1-1.2/src/ftdi.c
+libftdi1-1.2/src/ftdi.h
+libftdi1-1.2/src/ftdi_i.h
+libftdi1-1.2/src/ftdi_stream.c
+libftdi1-1.2/src/ftdi_version_i.h.in
+libftdi1-1.2/test/
+libftdi1-1.2/test/CMakeLists.txt
+libftdi1-1.2/test/basic.cpp
+libftdi1-1.2/test/baudrate.cpp
+~/build_android_toolchains/crossbuild/libftdi1-1.2 ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+patching file CMakeLists.txt
+patching file src/ftdi.c
+Hunk #1 succeeded at 624 (offset 1 line).
+Hunk #2 succeeded at 887 (offset 1 line).
+patching file src/ftdi.h
+patching file src/CMakeLists.txt
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+libftdispi/
+libftdispi/Makefile
+libftdispi/src/
+libftdispi/src/ftdispi.c
+libftdispi/src/ftdispi.h
+libmpsse/
+libmpsse/docs/
+libmpsse/docs/COPYING
+libmpsse/docs/INSTALL
+libmpsse/docs/README.I2C
+libmpsse/docs/AN_135_MPSSE_Basics.pdf
+libmpsse/docs/README
+libmpsse/docs/README.SPI
+libmpsse/docs/README.BITBANG
+libmpsse/docs/.svn/
+libmpsse/docs/.svn/prop-base/
+libmpsse/docs/.svn/prop-base/README.PYTHON.svn-base
+libmpsse/docs/.svn/props/
+libmpsse/docs/.svn/entries
+libmpsse/docs/.svn/tmp/
+libmpsse/docs/.svn/tmp/prop-base/
+libmpsse/docs/.svn/tmp/props/
+libmpsse/docs/.svn/tmp/text-base/
+libmpsse/docs/.svn/all-wcprops
+libmpsse/docs/.svn/text-base/
+libmpsse/docs/.svn/text-base/COPYING.svn-base
+libmpsse/docs/.svn/text-base/AN_135_MPSSE_Basics.pdf.svn-base
+libmpsse/docs/.svn/text-base/README.PYTHON.svn-base
+libmpsse/docs/.svn/text-base/README.BITBANG.svn-base
+libmpsse/docs/.svn/text-base/README.SPI.svn-base
+libmpsse/docs/.svn/text-base/README.C.svn-base
+libmpsse/docs/.svn/text-base/INSTALL.svn-base
+libmpsse/docs/.svn/text-base/README.GPIO.svn-base
+libmpsse/docs/.svn/text-base/README.I2C.svn-base
+libmpsse/docs/.svn/text-base/README.svn-base
+libmpsse/docs/README.PYTHON
+libmpsse/docs/README.C
+libmpsse/docs/README.GPIO
+libmpsse/.svn/
+libmpsse/.svn/prop-base/
+libmpsse/.svn/props/
+libmpsse/.svn/entries
+libmpsse/.svn/tmp/
+libmpsse/.svn/tmp/prop-base/
+libmpsse/.svn/tmp/props/
+libmpsse/.svn/tmp/text-base/
+libmpsse/.svn/all-wcprops
+libmpsse/.svn/text-base/
+libmpsse/src/
+libmpsse/src/configure.ac
+libmpsse/src/support.c
+libmpsse/src/mpsse.h
+libmpsse/src/configure
+libmpsse/src/examples/
+libmpsse/src/examples/gpio.c
+libmpsse/src/examples/at93c46d.py
+libmpsse/src/examples/ds1305.c
+libmpsse/src/examples/Makefile
+libmpsse/src/examples/bitbang.py
+libmpsse/src/examples/spiflash.py
+libmpsse/src/examples/i2ceeprom.c
+libmpsse/src/examples/bitbang.c
+libmpsse/src/examples/.svn/
+libmpsse/src/examples/.svn/prop-base/
+libmpsse/src/examples/.svn/props/
+libmpsse/src/examples/.svn/entries
+libmpsse/src/examples/.svn/tmp/
+libmpsse/src/examples/.svn/tmp/prop-base/
+libmpsse/src/examples/.svn/tmp/props/
+libmpsse/src/examples/.svn/tmp/text-base/
+libmpsse/src/examples/.svn/all-wcprops
+libmpsse/src/examples/.svn/text-base/
+libmpsse/src/examples/.svn/text-base/ds1305.c.svn-base
+libmpsse/src/examples/.svn/text-base/spiflash.c.svn-base
+libmpsse/src/examples/.svn/text-base/gpio.py.svn-base
+libmpsse/src/examples/.svn/text-base/bitbang.py.svn-base
+libmpsse/src/examples/.svn/text-base/Makefile.svn-base
+libmpsse/src/examples/.svn/text-base/spiflash.py.svn-base
+libmpsse/src/examples/.svn/text-base/gpio.c.svn-base
+libmpsse/src/examples/.svn/text-base/ds1305.py.svn-base
+libmpsse/src/examples/.svn/text-base/at93c46d.py.svn-base
+libmpsse/src/examples/.svn/text-base/bitbang.c.svn-base
+libmpsse/src/examples/.svn/text-base/i2ceeprom.py.svn-base
+libmpsse/src/examples/.svn/text-base/spiflashfast.c.svn-base
+libmpsse/src/examples/.svn/text-base/i2ceeprom.c.svn-base
+libmpsse/src/examples/ds1305.py
+libmpsse/src/examples/gpio.py
+libmpsse/src/examples/i2ceeprom.py
+libmpsse/src/examples/spiflash.c
+libmpsse/src/examples/spiflashfast.c
+libmpsse/src/mpsse.py
+libmpsse/src/mpsse.c
+libmpsse/src/fast.c
+libmpsse/src/.svn/
+libmpsse/src/.svn/prop-base/
+libmpsse/src/.svn/prop-base/configure.svn-base
+libmpsse/src/.svn/props/
+libmpsse/src/.svn/entries
+libmpsse/src/.svn/tmp/
+libmpsse/src/.svn/tmp/prop-base/
+libmpsse/src/.svn/tmp/props/
+libmpsse/src/.svn/tmp/text-base/
+libmpsse/src/.svn/all-wcprops
+libmpsse/src/.svn/text-base/
+libmpsse/src/.svn/text-base/mpsse.c.svn-base
+libmpsse/src/.svn/text-base/mpsse.py.svn-base
+libmpsse/src/.svn/text-base/mpsse.i.svn-base
+libmpsse/src/.svn/text-base/fast.c.svn-base
+libmpsse/src/.svn/text-base/configure.svn-base
+libmpsse/src/.svn/text-base/support.c.svn-base
+libmpsse/src/.svn/text-base/support.h.svn-base
+libmpsse/src/.svn/text-base/configure.ac.svn-base
+libmpsse/src/.svn/text-base/Makefile.in.svn-base
+libmpsse/src/.svn/text-base/mpsse.h.svn-base
+libmpsse/src/mpsse.i
+libmpsse/src/Makefile.in
+libmpsse/src/support.h
+~/build_android_toolchains/crossbuild/libmpsse ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+patching file src/mpsse.c
+patching file src/mpsse.h
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+mkdir: adresář „build“ vytvořen
+Removing default generated config - configure file ...
+~/build_android_toolchains/crossbuild/libusb-1.0.19 ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains/crossbuild/build/libusb-build-arm ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports nested variables... yes
+checking for arm-linux-androideabi-gcc... arm-linux-androideabi-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether arm-linux-androideabi-gcc accepts -g... yes
+checking for arm-linux-androideabi-gcc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of arm-linux-androideabi-gcc... gcc3
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by arm-linux-androideabi-gcc... /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/arm-linux-androideabi/bin/ld
+checking if the linker (/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/arm-linux-androideabi/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-nm -B
+checking the name lister (/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert x86_64-unknown-linux-gnu file names to arm-unknown-linux-androideabi format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/arm-linux-androideabi/bin/ld option to reload object files... -r
+checking for arm-linux-androideabi-objdump... arm-linux-androideabi-objdump
+checking how to recognize dependent libraries... pass_all
+checking for arm-linux-androideabi-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for arm-linux-androideabi-ar... arm-linux-androideabi-ar
+checking for archiver @FILE support... @
+checking for arm-linux-androideabi-strip... (cached) arm-linux-androideabi-strip
+checking for arm-linux-androideabi-ranlib... arm-linux-androideabi-ranlib
+checking command to parse /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-nm -B output from arm-linux-androideabi-gcc object... ok
+checking for sysroot... no
+checking for arm-linux-androideabi-mt... no
+checking for mt... mt
+configure: WARNING: using cross tools not prefixed with host triplet
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... arm-linux-androideabi-gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if arm-linux-androideabi-gcc supports -fno-rtti -fno-exceptions... no
+checking for arm-linux-androideabi-gcc option to produce PIC... -fPIC -DPIC
+checking if arm-linux-androideabi-gcc PIC flag -fPIC -DPIC works... yes
+checking if arm-linux-androideabi-gcc static flag -static works... no
+checking if arm-linux-androideabi-gcc supports -c -o file.o... yes
+checking if arm-linux-androideabi-gcc supports -c -o file.o... (cached) yes
+checking whether the arm-linux-androideabi-gcc linker (/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/arm-linux-androideabi/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for arm-linux-androideabi-windres... no
+checking for windres... no
+checking for inline... inline
+checking whether arm-linux-androideabi-gcc and cc understand -c and -o together... yes
+checking operating system... This is a Linux-Android system
+Linux
+checking for library containing clock_gettime... none required
+checking asm/types.h usability... yes
+checking asm/types.h presence... yes
+checking for asm/types.h... yes
+checking sys/socket.h usability... yes
+checking sys/socket.h presence... yes
+checking for sys/socket.h... yes
+checking for linux/netlink.h... yes
+checking for linux/filter.h... yes
+checking poll.h usability... yes
+checking poll.h presence... yes
+checking for poll.h... yes
+checking sys/timerfd.h usability... yes
+checking sys/timerfd.h presence... yes
+checking for sys/timerfd.h... yes
+checking whether TFD_NONBLOCK is declared... yes
+checking whether to use timerfd for timing... yes
+checking for struct timespec... yes
+checking syslog.h usability... yes
+checking syslog.h presence... yes
+checking for syslog.h... yes
+checking for syslog... yes
+checking for sigaction... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for gettimeofday... yes
+checking signal.h usability... yes
+checking signal.h presence... yes
+checking for signal.h... yes
+configure: creating ./config.status
+config.status: creating libusb-1.0.pc
+config.status: creating Makefile
+config.status: creating libusb/Makefile
+config.status: creating examples/Makefile
+config.status: creating tests/Makefile
+config.status: creating doc/Makefile
+config.status: creating doc/doxygen.cfg
+config.status: creating config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+make  all-recursive
+make[1]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+Making all in libusb
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+  CC     libusb_1_0_la-core.lo
+  CC     libusb_1_0_la-descriptor.lo
+  CC     libusb_1_0_la-io.lo
+  CC     libusb_1_0_la-strerror.lo
+  CC     libusb_1_0_la-sync.lo
+  CC     libusb_1_0_la-hotplug.lo
+  CC     os/libusb_1_0_la-threads_posix.lo
+  CC     os/libusb_1_0_la-linux_usbfs.lo
+  CC     os/libusb_1_0_la-poll_posix.lo
+  CC     os/libusb_1_0_la-linux_netlink.lo
+  CCLD   libusb-1.0.la
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+Making all in doc
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+make[1]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+Making install in libusb
+make[1]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+ /bin/mkdir -p '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libusb-1.0.la '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib'
+libtool: install: /usr/bin/install -c .libs/libusb-1.0.so /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.so
+libtool: install: /usr/bin/install -c .libs/libusb-1.0.lai /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.la
+libtool: install: /usr/bin/install -c .libs/libusb-1.0.a /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.a
+libtool: install: chmod 644 /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.a
+libtool: install: arm-linux-androideabi-ranlib /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.a
+libtool: finish: PATH="/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin" ldconfig -n /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /bin/mkdir -p '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/include/libusb-1.0'
+ /usr/bin/install -c -m 644 ../../../libusb-1.0.19/libusb/libusb.h '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/include/libusb-1.0'
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+make[1]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/libusb'
+Making install in doc
+make[1]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[2]: Nothing to be done for `install-exec-am'.
+make[2]: Nothing to be done for `install-data-am'.
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[1]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm/doc'
+make[1]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+make[2]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+make[2]: Nothing to be done for `install-exec-am'.
+ /bin/mkdir -p '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libusb-1.0.pc '/home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/pkgconfig'
+make[2]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+make[1]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/build/libusb-build-arm'
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains/crossbuild/build/libftdi-build-arm ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+-- The C compiler identification is GNU 4.9.0
+-- The CXX compiler identification is GNU 4.9.0
+-- Check for working C compiler: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-gcc
+-- Check for working C compiler: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-gcc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working CXX compiler: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-g++
+-- Check for working CXX compiler: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/bin/arm-linux-androideabi-g++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Build type: RelWithDebInfo
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.26") 
+-- checking for module 'libusb-1.0'
+--   found libusb-1.0, version 1.0.19
+-- Found LIBUSB: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libusb-1.0.so  
+-- Looking for libusb_open_fd
+-- Looking for libusb_open_fd - found
+-- Boost version: 1.49.0
+-- Found Doxygen: /usr/bin/doxygen (found version "1.8.1.2") 
+-- Not generating API documentation
+fatal: Not a git repository (or any of the parent directories): .git
+-- Detected git snapshot version: unknown
+-- Not building libftdi1++
+-- Not building python bindings
+-- Could NOT find Confuse (missing:  CONFUSE_LIBRARY CONFUSE_INCLUDE_DIR) 
+-- Looking for dgettext
+-- Looking for dgettext - not found
+-- Could NOT find Libintl (missing:  LIBINTL_LIB_FOUND) 
+-- libConfuse not found, won't build ftdi_eeprom
+-- Building example programs.
+-- NOT building unit test
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pavelf/build_android_toolchains/crossbuild/build/libftdi-build-arm
+Scanning dependencies of target ftdi1
+[  8%] Building C object src/CMakeFiles/ftdi1.dir/ftdi.c.o
+[ 16%] Building C object src/CMakeFiles/ftdi1.dir/ftdi_stream.c.o                                                                                                                                                                            
+Linking C shared library libftdi1.so
+[ 16%] Built target ftdi1
+Scanning dependencies of target baud_test
+[ 25%] Building C object examples/CMakeFiles/baud_test.dir/baud_test.c.o
+Linking C executable baud_test
+[ 25%] Built target baud_test
+Scanning dependencies of target bitbang
+[ 33%] Building C object examples/CMakeFiles/bitbang.dir/bitbang.c.o
+Linking C executable bitbang
+[ 33%] Built target bitbang
+Scanning dependencies of target bitbang2
+[ 41%] Building C object examples/CMakeFiles/bitbang2.dir/bitbang2.c.o
+Linking C executable bitbang2
+[ 41%] Built target bitbang2
+Scanning dependencies of target bitbang_cbus
+[ 50%] Building C object examples/CMakeFiles/bitbang_cbus.dir/bitbang_cbus.c.o
+Linking C executable bitbang_cbus
+[ 50%] Built target bitbang_cbus
+Scanning dependencies of target bitbang_ft2232
+[ 58%] Building C object examples/CMakeFiles/bitbang_ft2232.dir/bitbang_ft2232.c.o
+Linking C executable bitbang_ft2232
+[ 58%] Built target bitbang_ft2232
+Scanning dependencies of target eeprom
+[ 66%] Building C object examples/CMakeFiles/eeprom.dir/eeprom.c.o
+Linking C executable eeprom
+[ 66%] Built target eeprom
+Scanning dependencies of target find_all
+[ 75%] Building C object examples/CMakeFiles/find_all.dir/find_all.c.o
+Linking C executable find_all
+[ 75%] Built target find_all
+Scanning dependencies of target serial_test
+[ 83%] Building C object examples/CMakeFiles/serial_test.dir/serial_test.c.o
+Linking C executable serial_test
+[ 83%] Built target serial_test
+Scanning dependencies of target simple
+[ 91%] Building C object examples/CMakeFiles/simple.dir/simple.c.o
+Linking C executable simple
+[ 91%] Built target simple
+Scanning dependencies of target stream_test
+[100%] Building C object examples/CMakeFiles/stream_test.dir/stream_test.c.o
+Linking C executable stream_test
+[100%] Built target stream_test
+[ 16%] Built target ftdi1
+[ 25%] Built target baud_test
+[ 33%] Built target bitbang
+[ 41%] Built target bitbang2
+[ 50%] Built target bitbang_cbus
+[ 58%] Built target bitbang_ft2232
+[ 66%] Built target eeprom
+[ 75%] Built target find_all
+[ 83%] Built target serial_test
+[ 91%] Built target simple
+[100%] Built target stream_test
+Install the project...
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/pkgconfig/libftdi1.pc
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/pkgconfig/libftdipp1.pc
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/bin/libftdi1-config
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/cmake/libftdi1/LibFTDI1Config.cmake
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/cmake/libftdi1/LibFTDI1ConfigVersion.cmake
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/cmake/libftdi1/UseLibFTDI1.cmake
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libftdi1.so
+-- Installing: /home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/include/libftdi1/ftdi.h
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains/crossbuild/libftdispi ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+rm -f src/ftdispi.o libftdispi.so
+arm-linux-androideabi-gcc -fPIC -Wall -O2 -I$PREFIX/include/libftdi1   -c -o src/ftdispi.o src/ftdispi.c
+arm-linux-androideabi-gcc -shared -l ftdi1 -I$PREFIX/lib   src/ftdispi.o -o libftdispi.so 
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains/crossbuild/libmpsse/src ~/build_android_toolchains/crossbuild ~/build_android_toolchains
+configure: WARNING: If you wanted to set the --build type, don't use --host.
+    If a cross compiler is detected then cross compile mode will be used.
+checking for arm-linux-androideabi-gcc... arm-linux-androideabi-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether arm-linux-androideabi-gcc accepts -g... yes
+checking for arm-linux-androideabi-gcc option to accept ISO C89... none needed
+checking how to run the C preprocessor... arm-linux-androideabi-gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for size_t... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible malloc... (cached) yes
+checking libftdi1/ftdi.h usability... yes
+checking libftdi1/ftdi.h presence... yes
+checking for libftdi1/ftdi.h... yes
+checking for ftdi_init in -lftdi1... yes
+configure: creating ./config.status
+config.status: creating Makefile
+make -C examples clean
+make[1]: Entering directory `/home/pavelf/build_android_toolchains/crossbuild/libmpsse/src/examples'
+rm -f *.dSYM
+rm -f bitbang gpio ds1305 i2ceeprom spiflash spiflashfast
+make[1]: Leaving directory `/home/pavelf/build_android_toolchains/crossbuild/libmpsse/src/examples'
+rm -rf *.o *.so *.a _mpsse.py* pylibmpsse.py* mpsse_wrap.c *.pyc
+arm-linux-androideabi-gcc -Wall -fPIC -fno-strict-aliasing -g -O2 -lftdi1  -DLIBFTDI1=1 -c support.c
+arm-linux-androideabi-gcc -Wall -fPIC -fno-strict-aliasing -g -O2 -lftdi1  -DLIBFTDI1=1 -c mpsse.c
+arm-linux-androideabi-gcc -Wall -fPIC -fno-strict-aliasing -g -O2 -lftdi1  -DLIBFTDI1=1 -c fast.c
+arm-linux-androideabi-gcc -Wall -fPIC -fno-strict-aliasing -g -O2 -shared -Wl,-soname,libmpsse.so mpsse.o fast.o support.o \
+                -o libmpsse.so -lftdi1 
+ar rcs libmpsse.a mpsse.o fast.o support.o
+install -D -m644 libmpsse.so //home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libmpsse.so
+install -D -m644 libmpsse.a  //home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/lib/libmpsse.a
+install -D -m644 mpsse.h     //home/pavelf/build_android_toolchains/crossbuild/ndk-arm/sysroot/usr/include/mpsse.h
+~/build_android_toolchains/crossbuild ~/build_android_toolchains
+~/build_android_toolchains
+Finished building - libusb and libftdi for android ready ...
+------------------------------------------------------------

@@ -1,0 +1,69 @@
+diff -crB a/libusb/os/linux_usbfs.c b/libusb/os/linux_usbfs.c
+*** a/libusb/os/linux_usbfs.c	2014-05-30 11:18:28.000000000 +0200
+--- b/libusb/os/linux_usbfs.c	2015-12-02 09:19:33.649313637 +0100
+***************
+*** 42,47 ****
+--- 42,49 ----
+  #include "libusbi.h"
+  #include "linux_usbfs.h"
+  
++ #define ANDROID_5
++ 
+  /* sysfs vs usbfs:
+   * opening a usbfs node causes the device to be resumed, so we attempt to
+   * avoid this during enumeration.
+***************
+*** 371,378 ****
+--- 373,386 ----
+  
+  	usbfs_path = find_usbfs_path();
+  	if (!usbfs_path) {
++ 		/* On Android Lollipop (Android 5), their is restriction due to SELinux.
++ 		 * due to which, all filesystem related query ends up in failure. */	  
++ #ifdef ANDROID_5	  
++ 		usbi_warn(ctx, "could not find usbfs. Android 5+?"); 
++ #else	  
+  		usbi_err(ctx, "could not find usbfs");
+  		return LIBUSB_ERROR_OTHER;
++ #endif
+  	}
+  
+  	if (monotonic_clkid == -1)
+***************
+*** 438,445 ****
+--- 446,459 ----
+  	usbi_mutex_static_lock(&linux_hotplug_startstop_lock);
+  	r = LIBUSB_SUCCESS;
+  	if (init_count == 0) {
++ #ifdef ANDROID_5
++ 		if(linux_start_event_monitor() !=  LIBUSB_SUCCESS) {
++ 			usbi_warn(ctx, "unable to starting hotplug event monitor. Android 5+?");
++ 		}
++ #else	  
+  		/* start up hotplug event handler */
+  		r = linux_start_event_monitor();
++ #endif		
+  	}
+  	if (r == LIBUSB_SUCCESS) {
+  		r = linux_scan_devices(ctx);
+***************
+*** 447,454 ****
+  			init_count++;
+  		else if (init_count == 0)
+  			linux_stop_event_monitor();
+! 	} else
+  		usbi_err(ctx, "error starting hotplug event monitor");
+  	usbi_mutex_static_unlock(&linux_hotplug_startstop_lock);
+  
+  	return r;
+--- 461,469 ----
+  			init_count++;
+  		else if (init_count == 0)
+  			linux_stop_event_monitor();
+! 	} else {
+  		usbi_err(ctx, "error starting hotplug event monitor");
++ 	}
+  	usbi_mutex_static_unlock(&linux_hotplug_startstop_lock);
+  
+  	return r;
+Pouze v b/libusb/os: linux_usbfs.c~
