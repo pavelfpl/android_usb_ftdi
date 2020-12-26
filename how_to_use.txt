@@ -3,10 +3,14 @@
  How to use libusb/libftdi using C++ and Qt5 on Android 
  ------------------------------------------------------
  Pavel Fiala 2020
- - use as reference / fragment codes only ...
+ ------------------------------------------------------
+ ------  use as reference / fragment codes only ------- 
+ ------------------------------------------------------
 */
 
+// ------------------------------------
 // 1) Qt5 application *.pro file - LIBS
+// ------------------------------------
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_EXTRA_LIBS = \
@@ -22,11 +26,23 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
         LIBS += -L$$PWD/lib/armv8_64/ -lftdi1
 }
 
-// 2) You need obtain descriptor (fd) at first ...
+// ---------------------------------------------------------------
+// 2) Set device filter: PROJECT/android/res/xml/device_filter.xml
+// ---------------------------------------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- FTDI Chips -->
+    <usb-device vendor-id="1027" product-id="24577"/>
+    <usb-device vendor-id="1027" product-id="24596"/>
+    <usb-device vendor-id="1027" product-id="24597"/>
+</resources>
+
+// ------------------------------------------------------------
+// 3) You need obtain descriptor (fd) and device name first ...
+// ------------------------------------------------------------
 
 // get_usb_fd() function (usb init only for Android)
-// -------------------------------------------------
-
 /*
 * Get the file descriptor of first available ftdi device attached to usb in android.
 * This is needed for device_open on android.
@@ -38,7 +54,6 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 *	-4 : Error while opening the device.
 *   +ve num : Successfully extracted file descriptor is returned.
 */
-
 
 int32_t get_usb_fd(QString &thisFtdiDev){
 
@@ -109,11 +124,12 @@ int32_t get_usb_fd(QString &thisFtdiDev){
   return fd;
 }
 
-// 3) FTDI init function (use previous descriptor fd and thisFtdiDev as parameters)
+// --------------------------------------------------------------------------------
+// 4) FTDI init function (use previous descriptor fd and thisFtdiDev as parameters)
 // - example: ftdiInit(fd,thisFtdiDev.toStdString().c_str());
+// --------------------------------------------------------------------------------
 
 // ftdiInit function - init of FTDI resources (UART)
-// -----------------------------------------------------
 int32_t ftdiInit(const int32_t fd,const char *devName){
 
     int32_t f_d=-1;
@@ -169,7 +185,9 @@ int32_t ftdiInit(const int32_t fd,const char *devName){
 
 }
 
-// 4) Close USB connection ...
+// -----------------------------------
+// 5) Close USB connection finally ...
+// -----------------------------------
 
 if(fd > 0){
    jboolean release=usbDeviceConnection.callMethod<jboolean>("releaseInterface", "(Landroid/hardware/usb/UsbInterface;)Z",usbInterface.object());
